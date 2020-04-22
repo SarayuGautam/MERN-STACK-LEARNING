@@ -5,8 +5,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const PORT = 3000;
 
+require("./todo-router");
+
 app.use(cors());
 app.use(bodyParser.json());
+app.use("/todos", { todoRouter });
 
 //setting Up Database Connection
 mongoose.connect("mongodb://127.0.0.1:27017/todos", {
