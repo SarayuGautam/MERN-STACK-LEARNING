@@ -3,13 +3,12 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const PORT = process.env.PORT;
-
-require("./todo-router");
+const PORT = process.env.PORT || 5000;
+const todoRouter = require("./routes/todo-router");
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use("/todos", { todoRouter });
+app.use("/todos", todoRouter);
 
 //setting Up Database Connection
 mongoose.connect("mongodb://127.0.0.1:27017/todos", {

@@ -1,5 +1,6 @@
 const express = require("express");
 const todoRouter = express.Router();
+const Todo = require("../model/todo.model");
 todoRouter.get("/", function (req, res) {
   Todo.find(function (err, todos) {
     if (err) {
