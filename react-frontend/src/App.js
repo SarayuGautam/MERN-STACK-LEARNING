@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import TodoList from "../src/components/todos-list.component";
-import EditTodo from "../src/components/edit-todo.component";
-import CreateTodo from "../src/components/create-todo.component";
+import TodoList from "./components/pages/todos-list.component";
+import EditTodo from "./components/pages/edit-todo.component";
+import CreateTodo from "./components/pages/create-todo.component";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import CustomNav from "./components/navbar.component";
+import CustomNav from "./components/elements/navbar.component";
 class App extends Component {
   render() {
     return (
@@ -13,9 +13,11 @@ class App extends Component {
         <div className="container">
           <CustomNav />
         </div>
-        <Route path="/" exact component={TodoList} />
-        <Route path="/edit:id" component={EditTodo} />
-        <Route path="/create" exact component={CreateTodo} />
+        <div className="container">
+          <Route path="/" exact component={TodoList} />
+          <Route path="/edit:id" component={EditTodo} />
+          <Route path="/create" exact component={CreateTodo} />
+        </div>
       </Router>
     );
   }

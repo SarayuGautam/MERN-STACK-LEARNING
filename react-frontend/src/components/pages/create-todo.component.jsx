@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class CreateTodo extends Component {
   constructor(props) {
@@ -12,11 +13,11 @@ export default class CreateTodo extends Component {
     };
   }
 
-  onFormFieldChange(e) {
+  onFormFieldChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
-  }
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +25,17 @@ export default class CreateTodo extends Component {
     console.log(`TODO Description: ${this.state.description}`);
     console.log(`TODO Responsible: ${this.state.responsible}`);
     console.log(`TODO Priority: ${this.state.priority}`);
+
+    const newTodo = {
+      description: this.state.description,
+      responsible: this.state.responsible,
+      priority: this.state.priority,
+      completed: this.state.completed,
+    };
+
+    axios
+      .post("http://localhost:5000/todos/add", newTodo)
+      .then((res) => console.log(res.data));
 
     this.setState({
       priority: "",
@@ -34,7 +46,7 @@ export default class CreateTodo extends Component {
   };
   render() {
     return (
-      <div className="container" style={{ marginTop: 10 }}>
+      <div style={{ marginTop: 10 }}>
         <h3>Create New Todo</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
@@ -42,6 +54,7 @@ export default class CreateTodo extends Component {
             <input
               type="text"
               className="form-control"
+              name="description"
               value={this.description}
               onChange={this.onFormFieldChange}
             ></input>
@@ -50,6 +63,7 @@ export default class CreateTodo extends Component {
             <label>Responsible:</label>
             <input
               type="text"
+              name="responsible"
               className="form-control"
               value={this.responsible}
               onChange={this.onFormFieldChange}
@@ -58,7 +72,7 @@ export default class CreateTodo extends Component {
           <div className="form-check form-check-inline">
             <input
               type="radio"
-              name="PriorityOptions"
+              name="priority"
               id="priorityLow"
               value="Low"
               checked={this.state.priority === "Low"}
@@ -69,7 +83,7 @@ export default class CreateTodo extends Component {
           <div className="form-check form-check-inline">
             <input
               type="radio"
-              name="PriorityOptions"
+              name="priority"
               id="priorityMedium"
               value="Medium"
               checked={this.state.priority === "Medium"}
@@ -80,7 +94,7 @@ export default class CreateTodo extends Component {
           <div className="form-check form-check-inline">
             <input
               type="radio"
-              name="PriorityOptions"
+              name="priority"
               id="priorityHigh"
               value="High"
               checked={this.state.priority === "High"}
