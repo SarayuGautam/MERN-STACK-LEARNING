@@ -1,5 +1,6 @@
+const express = require("express");
 const todoRouter = express.Router();
-module.exports = todoRouter.route("/").get(function (req, res) {
+todoRouter.get("/", function (req, res) {
   Todo.find(function (err, todos) {
     if (err) {
       console.log(err);
@@ -9,14 +10,14 @@ module.exports = todoRouter.route("/").get(function (req, res) {
   });
 });
 
-module.exports = todoRouter.route("/:id").get(function (req, res) {
+todoRouter.get("/:id", function (req, res) {
   let id = req.params.id;
   Todo.findById(id, function (err, todo) {
     res.json(todo);
   });
 });
 
-module.exports = todoRouter.route("/add").post(function (req, res) {
+todoRouter.post("/add", function (req, res) {
   let todo = new Todo(req.body);
 
   todo
@@ -29,7 +30,7 @@ module.exports = todoRouter.route("/add").post(function (req, res) {
     });
 });
 
-module.exports = todoRouter.route("/update/:id").post(function (req, res) {
+todoRouter.post("/update/:id", function (req, res) {
   Todo.findById(req.params.id, function (err, todo) {
     if (!todo) {
       res.status(400).send("Data is not found!");
