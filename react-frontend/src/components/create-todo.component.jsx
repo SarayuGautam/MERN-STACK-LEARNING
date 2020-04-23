@@ -10,29 +10,15 @@ export default class CreateTodo extends Component {
       priority: "",
       completed: false,
     };
-    this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
-    this.onChangeTodoResponsible = this.onChangeTodoResponsible.bind(this);
-    this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChangeTodoDescription(e) {
+  onFormFieldChange(e) {
     this.setState({
-      description: e.target.value,
-    });
-  }
-  onChangeTodoResponsible(e) {
-    this.setState({
-      responsible: e.target.value,
-    });
-  }
-  onChangeTodoPriority(e) {
-    this.setState({
-      priority: e.target.value,
+      [e.target.name]: e.target.value,
     });
   }
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted");
     console.log(`TODO Description: ${this.state.description}`);
@@ -45,7 +31,7 @@ export default class CreateTodo extends Component {
       responsible: "",
       completed: false,
     });
-  }
+  };
   render() {
     return (
       <div className="container" style={{ marginTop: 10 }}>
@@ -57,7 +43,7 @@ export default class CreateTodo extends Component {
               type="text"
               className="form-control"
               value={this.description}
-              onChange={this.onChangeTodoDescription}
+              onChange={this.onFormFieldChange}
             ></input>
           </div>
           <div className="form-group">
@@ -66,7 +52,7 @@ export default class CreateTodo extends Component {
               type="text"
               className="form-control"
               value={this.responsible}
-              onChange={this.onChangeTodoResponsible}
+              onChange={this.onFormFieldChange}
             ></input>
           </div>
           <div className="form-check form-check-inline">
@@ -76,7 +62,7 @@ export default class CreateTodo extends Component {
               id="priorityLow"
               value="Low"
               checked={this.state.priority === "Low"}
-              onChange={this.onChangeTodoPriority}
+              onChange={this.onFormFieldChange}
             />
             <label className="form-check-label">Low</label>
           </div>
@@ -87,7 +73,7 @@ export default class CreateTodo extends Component {
               id="priorityMedium"
               value="Medium"
               checked={this.state.priority === "Medium"}
-              onChange={this.onChangeTodoPriority}
+              onChange={this.onFormFieldChange}
             />
             <label className="form-check-label">Medium</label>
           </div>
@@ -98,7 +84,7 @@ export default class CreateTodo extends Component {
               id="priorityHigh"
               value="High"
               checked={this.state.priority === "High"}
-              onChange={this.onChangeTodoPriority}
+              onChange={this.onFormFieldChange}
             />
             <label className="form-check-label">High</label>
           </div>
