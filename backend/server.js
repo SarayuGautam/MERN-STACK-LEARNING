@@ -5,6 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
 const todoRouter = require("./routes/todo-router");
+require("dotenv").config();
 
 app.use(cors());
 app.use(bodyParser.json());

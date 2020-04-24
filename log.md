@@ -25,3 +25,11 @@
 - `Axios` installed
 - Implementation of _Create-Todo_ Component Completed
 - Implementation of _Todo-List_ Component Completed
+
+## Day3 Friday April 24
+
+### Finishing the application
+
+- Implemented Suggestions
+- Linked the _EditTodo_ Component
+- Completed the coding and debugging part
