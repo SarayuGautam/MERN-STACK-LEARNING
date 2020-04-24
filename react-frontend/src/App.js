@@ -15,7 +15,7 @@ class App extends Component {
         </div>
         <div className="container">
           <Route path="/" exact component={TodoList} />
-          <Route path="/edit:id" component={EditTodo} />
+          <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" exact component={CreateTodo} />
         </div>
       </Router>

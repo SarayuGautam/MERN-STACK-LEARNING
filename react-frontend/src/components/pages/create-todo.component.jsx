@@ -37,6 +37,8 @@ export default class CreateTodo extends Component {
       .post("http://localhost:5000/todos/add", newTodo)
       .then((res) => console.log(res.data));
 
+    this.props.history.push("/");
+
     this.setState({
       priority: "",
       description: "",
