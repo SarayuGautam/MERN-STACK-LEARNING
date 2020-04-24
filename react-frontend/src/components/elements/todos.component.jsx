@@ -2,14 +2,16 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-export default function Todo(props) {
+export default function Todo({
+  todo: { _id, description, responsible, priority },
+}) {
   return (
     <tr>
-      <td>{props.todo.description}</td>
-      <td>{props.todo.responsible}</td>
-      <td>{props.todo.priority}</td>
+      <td>{description}</td>
+      <td>{responsible}</td>
+      <td>{priority}</td>
       <td>
-        <Link to={"/edit/" + props.todo._id}>Edit</Link>
+        <Link to={"/edit/" + { _id }}>Edit</Link>
       </td>
     </tr>
   );
