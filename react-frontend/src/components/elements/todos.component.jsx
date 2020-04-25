@@ -13,6 +13,11 @@ export default function Todo({
       <td>
         <Link to={"/edit/" + _id}>Edit</Link>
       </td>
+      <td>
+        <Link style={{ color: "red " }} to={"/delete/" + _id}>
+          Delete
+        </Link>
+      </td>
     </tr>
   );
 }

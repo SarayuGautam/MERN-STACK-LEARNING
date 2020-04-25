@@ -42,7 +42,8 @@ export default class TodoList extends Component {
               <th>Description</th>
               <th>Responsible</th>
               <th>Priority</th>
-              <th>Action</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>{this.todoList()}</tbody>

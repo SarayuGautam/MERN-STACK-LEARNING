@@ -53,4 +53,21 @@ todoRouter.post("/update/:id", function (req, res) {
     }
   });
 });
+
+todoRouter.delete("/delete/:id", function (req, res) {
+  Todo.findById(req.params.id, function (err, todo) {
+    if (!todo) {
+      res.status(400).send("Data is not found!");
+    } else {
+      todo
+        .remove()
+        .then(() => {
+          res.json("Todo Deleted!");
+        })
+        .catch((err) => {
+          res.status(400).send("Delete not possible");
+        });
+    }
+  });
+});
 module.exports = todoRouter;

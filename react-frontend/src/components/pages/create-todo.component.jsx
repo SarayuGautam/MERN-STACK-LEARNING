@@ -35,7 +35,10 @@ export default class CreateTodo extends Component {
 
     axios
       .post("http://localhost:5000/todos/add", newTodo)
-      .then((res) => console.log(res.data));
+      .then((res) => console.log(res.data))
+      .catch(function (err) {
+        console.log(err);
+      });
 
     this.props.history.push("/");
 
